@@ -1,0 +1,51 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.fenix15100</groupId>
+  <artifactId>JsonApiServer</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>JsonApiServer</name>
+  <description>Rest JSON API 1.0 implemented with Elide.io Standalone Java 8 and Hibernate 5</description>
+  
+  <dependencies>
+  
+	 <dependency>
+	  	<groupId>com.yahoo.elide</groupId>
+	  	<artifactId>elide-core</artifactId>
+		<version>4.2.7</version>
+	</dependency>
+	
+	<dependency>
+  		<groupId>com.yahoo.elide</groupId>
+  		<artifactId>elide-parent-pom</artifactId>
+  		<version>4.2.7</version>
+  		<type>pom</type>
+	</dependency>
+	
+	<dependency>
+  		<groupId>com.yahoo.elide</groupId>
+  		<artifactId>elide-annotations</artifactId>
+  		<version>4.2.7</version>
+	</dependency>
+
+	<dependency>
+  		<groupId>com.yahoo.elide</groupId>
+  		<artifactId>elide-standalone</artifactId>
+  		<version>4.2.7</version>
+	</dependency>
+	
+	<dependency>
+  		<groupId>com.yahoo.elide</groupId>
+  		<artifactId>elide-datastore-parent-pom</artifactId>
+  		<version>4.2.7</version>
+  		<type>pom</type>
+	</dependency>
+	
+	<dependency>
+  		<groupId>com.yahoo.elide</groupId>
+  		<artifactId>elide-datastore-hibernate5</artifactId>
+  		<version>4.2.7</version>
+	</dependency>
+  
+  
+  </dependencies>
+</project>
