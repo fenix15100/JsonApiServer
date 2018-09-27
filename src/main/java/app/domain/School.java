@@ -12,7 +12,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.NamedQuery;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.yahoo.elide.annotation.Include;
 
@@ -23,7 +22,6 @@ import com.yahoo.elide.annotation.Include;
 @SuppressWarnings("serial")
 @Entity
 @Table(name="school")
-@NamedQuery(name="School.findAll", query="SELECT c FROM school c")
 @Include(rootLevel = true, type = "school")
 public class School implements Serializable{
 

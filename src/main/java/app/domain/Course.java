@@ -10,7 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.NamedQuery;
 
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -20,7 +19,6 @@ import com.yahoo.elide.annotation.Include;
 @SuppressWarnings("serial")
 @Entity
 @Table(name="course")
-@NamedQuery(name="Course.findAll", query="SELECT c FROM course c")
 @Include(type = "course")
 
 public class Course implements Serializable {

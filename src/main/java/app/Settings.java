@@ -1,16 +1,34 @@
 package app;
 
-import com.yahoo.elide.standalone.config.ElideStandaloneSettings;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import io.dropwizard.Configuration;
+import io.dropwizard.db.DataSourceFactory;
 
 
 
 
 	
-public class Settings implements ElideStandaloneSettings {
+public class Settings extends Configuration {
+	@Valid
+	@NotNull
+	private DataSourceFactory database = new DataSourceFactory();
 
-	public String getModelPackageName() {
-		// TODO Auto-generated method stub
-		return "app.domain";
+	@JsonProperty("database")
+	public DataSourceFactory getDatabase() {
+		return database;
 	}
+
+	@JsonProperty("database")
+	public void setDatabase(DataSourceFactory database) {
+		this.database = database;
+	}
+	 
+	 
+
+
 	  
 }

@@ -6,103 +6,46 @@
   <name>JsonApiServer</name>
   <description>Rest JSON API 1.0 implemented with Elide.io Standalone Java 8 and Hibernate 5</description>
   
+
   <dependencies>
   
-	 
-	<dependency>
-  		<groupId>com.yahoo.elide</groupId>
-  		<artifactId>elide-standalone</artifactId>
-  		<version>4.2.7</version>
+  	<dependency>
+  		<groupId>io.dropwizard</groupId>
+  		<artifactId>dropwizard-parent</artifactId>
+  		<version>1.3.5</version>
+  		<type>pom</type>
 	</dependency>
 	
 	<dependency>
-    <groupId>org.glassfish.jersey.containers</groupId>
-    <artifactId>jersey-container-jetty-servlet</artifactId>
-    <version>2.21</version>
-</dependency>
-
-
-<!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-util -->
-<dependency>
-    <groupId>org.eclipse.jetty</groupId>
-    <artifactId>jetty-util</artifactId>
-    <version>9.3.20.v20170531</version>
-</dependency>
-
-<dependency>
-    <groupId>org.glassfish.jersey.bundles</groupId>
-    <artifactId>jaxrs-ri</artifactId>
-    <version>2.21</version>
-  </dependency>
-  
-  <!-- https://mvnrepository.com/artifact/org.glassfish.hk2/hk2-api -->
-<dependency>
-    <groupId>org.glassfish.hk2</groupId>
-    <artifactId>hk2-api</artifactId>
-    <version>2.5.0-b62</version>
-</dependency>
-
-<!-- https://mvnrepository.com/artifact/org.glassfish.hk2/hk2 -->
-<dependency>
-    <groupId>org.glassfish.hk2</groupId>
-    <artifactId>hk2</artifactId>
-    <version>2.5.0-b62</version>
-</dependency>
-
-<!-- https://mvnrepository.com/artifact/org.glassfish.hk2/hk2-core -->
-<dependency>
-    <groupId>org.glassfish.hk2</groupId>
-    <artifactId>hk2-core</artifactId>
-    <version>2.5.0-b62</version>
-</dependency>
-
-<!-- https://mvnrepository.com/artifact/org.glassfish.hk2/hk2-locator -->
-<dependency>
-    <groupId>org.glassfish.hk2</groupId>
-    <artifactId>hk2-locator</artifactId>
-    <version>2.5.0-b62</version>
-</dependency>
-
-<!-- https://mvnrepository.com/artifact/org.glassfish.hk2.external/javax.inject -->
-<dependency>
-    <groupId>org.glassfish.hk2.external</groupId>
-    <artifactId>javax.inject</artifactId>
-    <version>2.5.0-b62</version>
-</dependency>
-
-<!-- https://mvnrepository.com/artifact/org.glassfish.hk2/hk2-utils -->
-<dependency>
-    <groupId>org.glassfish.hk2</groupId>
-    <artifactId>hk2-utils</artifactId>
-    <version>2.5.0-b62</version>
-</dependency>
-
-
-<!-- https://mvnrepository.com/artifact/org.glassfish.jersey.core/jersey-common -->
-<dependency>
-    <groupId>org.glassfish.jersey.core</groupId>
-    <artifactId>jersey-common</artifactId>
-    <version>2.27</version>
-</dependency>
-
-<dependency>
-  <groupId>org.glassfish.jersey.bundles.repackaged</groupId>
-  <artifactId>jersey-guava</artifactId>
-  <version>2.6</version>
-</dependency>
-
-<dependency>
-<groupId>com.fasterxml.jackson.dataformat</groupId>
-<artifactId>jackson-dataformat-xml</artifactId>
-<version>2.8.5</version>
-</dependency>
-  
-
-
-
-
+  		<groupId>io.dropwizard</groupId>
+  		<artifactId>dropwizard-db</artifactId>
+  		<version>1.3.5</version>
+	</dependency>
 	
+	<dependency>
+  		<groupId>com.yahoo.elide</groupId>
+  		<artifactId>dropwizard-elide</artifactId>
+  		<version>3.2.2</version>
+	</dependency>	
+	
+	<dependency>
+  		<groupId>mysql</groupId>
+  		<artifactId>mysql-connector-java</artifactId>
+  		<version>8.0.12</version>
+	</dependency>
 
-  
   </dependencies>
+  <build>
+     <plugins>
+        <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.0</version>
+                <configuration>
+                   <source>1.8</source>
+                   <target>1.8</target>
+                </configuration>
+        </plugin>
+    </plugins>
+</build>
 </project>
