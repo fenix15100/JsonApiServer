@@ -12,7 +12,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.yahoo.elide.annotation.Include;
 
 
@@ -54,7 +53,7 @@ public class School implements Serializable{
 	}
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id_school")
 	public Integer getId() {
 		return id;
@@ -83,7 +82,7 @@ public class School implements Serializable{
 
 	@OneToMany(mappedBy="school",cascade = CascadeType.ALL, orphanRemoval = true)
 	@Column(nullable=true)
-	@JsonManagedReference
+	
 	public Set<Course> getCourses() {
 		return courses;
 	}
@@ -92,12 +91,12 @@ public class School implements Serializable{
 		this.courses = courses;
 	}
 
-	public Course addChild(Course course) {
+	public Course addCourse(Course course) {
 		getCourses().add(course);
 		course.setSchool(this);
 		return course;
 	}
-	public Course removeChild(Course course) {
+	public Course removeCourse(Course course) {
 		getCourses().remove(course);
 		course.setSchool(null);
 		return course;

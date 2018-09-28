@@ -5,6 +5,7 @@ import com.yahoo.elide.resources.JsonApiEndpoint;
 
 import app.domain.Course;
 import app.domain.School;
+import app.domain.Subject;
 import io.dropwizard.Application;
 import io.dropwizard.db.DataSourceFactory;
 import io.dropwizard.setup.Bootstrap;
@@ -13,7 +14,7 @@ import io.dropwizard.setup.Environment;
 public class JsonApiServer extends Application<Settings>{
 
 	
-	 private final ElideBundle<Settings> repository = new ElideBundle<Settings>(School.class,Course.class){
+	 private final ElideBundle<Settings> repository = new ElideBundle<Settings>(School.class,Course.class,Subject.class){
 	        @Override
 	        public DataSourceFactory getDataSourceFactory(Settings configuration) {
 	            return configuration.getDatabase();
@@ -38,6 +39,7 @@ public class JsonApiServer extends Application<Settings>{
 	public static void main(String[] args) throws Exception {
 		
 		new JsonApiServer().run("server","app.yml");
+		
 		
 	
 		

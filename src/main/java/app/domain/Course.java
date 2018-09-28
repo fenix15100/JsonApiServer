@@ -1,25 +1,29 @@
 package app.domain;
 
 import java.io.Serializable;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import com.yahoo.elide.annotation.Include;
 
 
 @SuppressWarnings("serial")
 @Entity
 @Table(name="course")
-@Include(type = "course")
+@Include(rootLevel = true,type = "course")
 
 public class Course implements Serializable {
 
@@ -35,24 +39,28 @@ public class Course implements Serializable {
 
 	private School school;
 	
-	// TODO implement Asignaturas, Alumnos ,Profesores (ManytoMany)
+	
+    private Set<Subject> subjects;
+	
 
 	public Course() {
 
 
 	}
 
-	public Course(Integer id, String name, int grade, School school) {
+	public Course(Integer id, String name, int grade, School school, Set<Subject> subject) {
 		this.id = id;
 		this.name = name;
 		this.grade = grade;
 		this.school = school;
+		this.subjects = subject;
 	}
 	
-	public Course(String name, int grade, School school) {
+	public Course(String name, int grade, School school, Set<Subject> subject) {
 		this.name = name;
 		this.grade = grade;
 		this.school = school;
+		this.subjects = subject;
 	}
 	
 	public Course(String name, int grade) {
@@ -61,7 +69,7 @@ public class Course implements Serializable {
 	}
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id_course")
 	public Integer getId() {
 		return id;
@@ -88,8 +96,7 @@ public class Course implements Serializable {
 	}
 
 	@ManyToOne
-	@JoinColumn(name="id_school", referencedColumnName="id_school",nullable=false)
-	@JsonBackReference
+	@JoinColumn(name="id_school", referencedColumnName="id_school",nullable=true)
 	public School getSchool() {
 		return school;
 	}
@@ -97,4 +104,20 @@ public class Course implements Serializable {
 	public void setSchool(School school) {
 		this.school = school;
 	}
+
+	@ManyToMany(cascade = { CascadeType.ALL })
+    @JoinTable(
+        name = "course_subject", 
+        joinColumns = { @JoinColumn(name = "course_id") }, 
+        inverseJoinColumns = { @JoinColumn(name = "subject_id") }
+    )
+	public Set<Subject> getSubjects() {
+		return subjects;
+	}
+
+	public void setSubjects(Set<Subject> subjects) {
+		this.subjects = subjects;
+	}
+	
+	
 }
