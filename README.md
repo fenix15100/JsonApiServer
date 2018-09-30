@@ -56,3 +56,5 @@ Rest [JSON API](http://jsonapi.org/) 1.0 implemented with Elide.io & Dropwizard 
         $ curl -H'Content-Type: application/vnd.api+json' -H'Accept: application/vnd.api+json' http://localhost:8080/course/
 
 You can also load some pre-configured Schools and Courses using `DummyData.sql` in `Database` 
+
+For Actions more complex see de especification JSON API 1.0 [Here](http://jsonapi.org/format/) 
