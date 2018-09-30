@@ -42,7 +42,7 @@ Rest [JSON API](http://jsonapi.org/) 1.0 implemented with Elide.io & Dropwizard 
           }
         }' -X POST http://localhost:8080/course
 
-7. Associate the School and Course
+7. Associate the School with the Course
 
         $ curl -H'Content-Type: application/vnd.api+json' -H'Accept: application/vnd.api+json' --data '{
           "data": {
