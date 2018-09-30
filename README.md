@@ -8,53 +8,51 @@ Rest [JSON API](http://jsonapi.org/) 1.0 implemented with Elide.io & Dropwizard 
 2. Create ```academicdb``` database
 
         mysql> create database academicdb;
-    Can change user and password y app.yml file
+    Can change user and password in app.yml file
 
 
 
-4. Launch the example webservice
+4. Launch the webservice with maven or your IDE (main Class app.JsonApiServer.java)
 
-        ~/dropwizard-elide $ mvn install
-        ~/dropwizard-elide $ cd dropwizard-elide-example
-        ~/dropwizard-elide/dropwizard-elide-example $ java -jar target/dropwizard-elide-example-1.0-SNAPSHOT.jar server example.yml
+        
 
-5. Create an author
+5. Create an School
 
         $ curl -H'Content-Type: application/vnd.api+json' -H'Accept: application/vnd.api+json' --data '{
           "data": {
             "id": "-",
-            "type": "author",
+            "type": "school
             "attributes": {
-              "name": "Ernest Hemingway"
+              "name": "Instuto Escola industrial",
+              "street": "Calle False 123"
             }
           }
-        }' -X POST http://localhost:8080/author
+        }' -X POST http://localhost:8080/school
 
-6. Create a book
+6. Create a Course
 
         $ curl -H'Content-Type: application/vnd.api+json' -H'Accept: application/vnd.api+json' --data '{
           "data": {
             "id": "-",
-            "type": "book",
+            "type": "course
             "attributes": {
-              "title": "The Old Man and the Sea",
-              "genre": "Literary Fiction",
-              "language": "English"
+              "name":  "ESO",
+              "grade": "2"
             }
           }
-        }' -X POST http://localhost:8080/book
+        }' -X POST http://localhost:8080/course
 
-7. Associate the author and book
+7. Associate the School and Course
 
         $ curl -H'Content-Type: application/vnd.api+json' -H'Accept: application/vnd.api+json' --data '{
           "data": {
             "id": "1",
-            "type": "author"
+            "type": "school"
           }
-        }' -X PATCH http://localhost:8080/book/1/relationships/authors
+        }' -X PATCH http://localhost:8080/course/1/relationships/school
 
-8. Get books
+8. Get courses
 
-        $ curl -H'Content-Type: application/vnd.api+json' -H'Accept: application/vnd.api+json' http://localhost:8080/book/
+        $ curl -H'Content-Type: application/vnd.api+json' -H'Accept: application/vnd.api+json' http://localhost:8080/course/
 
-You can also load some pre-configured authors and books using `load_elide.sh` in `/scripts` 
+You can also load some pre-configured Schools and Courses using `DummyData.sql` in `Database` 
